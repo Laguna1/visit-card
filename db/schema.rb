@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_221408) do
+ActiveRecord::Schema.define(version: 2022_01_04_222045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,15 @@ ActiveRecord::Schema.define(version: 2022_01_04_221408) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.string "visit_to"
     t.string "problem"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "visitor_who_id"
+    t.bigint "visit_to_id"
+    t.index ["visit_to_id"], name: "index_visits_on_visit_to_id"
     t.index ["visitor_who_id"], name: "index_visits_on_visitor_who_id"
   end
 
+  add_foreign_key "visits", "users", column: "visit_to_id"
   add_foreign_key "visits", "users", column: "visitor_who_id"
 end
