@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_222045) do
+ActiveRecord::Schema.define(version: 2022_01_06_230309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2022_01_04_222045) do
     t.string "problem"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "visitor_who_id"
-    t.bigint "visit_to_id"
-    t.index ["visit_to_id"], name: "index_visits_on_visit_to_id"
-    t.index ["visitor_who_id"], name: "index_visits_on_visitor_who_id"
+    t.bigint "from_user_id"
+    t.bigint "to_user_id"
+    t.index ["from_user_id"], name: "index_visits_on_from_user_id"
+    t.index ["to_user_id"], name: "index_visits_on_to_user_id"
   end
 
-  add_foreign_key "visits", "users", column: "visit_to_id"
-  add_foreign_key "visits", "users", column: "visitor_who_id"
+  add_foreign_key "visits", "users", column: "from_user_id"
+  add_foreign_key "visits", "users", column: "to_user_id"
 end

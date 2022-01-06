@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Visitor who:</th>
-      <th>Visitor who_id:</th>
+      <th>From_user_id:</th>
       <th>Visit to:</th>
-      <th>Visit to_id:</th>
+      <th>To_user_id:</th>
       <th>Problem</th>
       <th colspan="3"></th>
     </tr>
@@ -17,10 +17,10 @@
   <tbody>
     <% @visits.each do |visit| %>
       <tr>
-        <td><%= visit.visitor_who %></td>
-        <td><%= visit.visitor_who.id %></td>
-        <td><%= visit.visit_to %></td>
-        <td><%= visit.visit_to.id %></td>
+        <td><%= visit.from_user.fullname %></td>
+        <td><%= visit.from_user.id %></td>
+        <td><%= visit.to_user.fullname %></td>
+        <td><%= visit.to_user.id %></td>
         <td><%= visit.problem %></td>
         <td><%= link_to 'Show', visit %></td>
         <td><%= link_to 'Edit', edit_visit_path(visit) %></td>
